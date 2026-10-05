@@ -29,6 +29,13 @@ cos_scores = util.cos_sim(query_embedding, kb_embeddings)[0]
 # 6. Retrieve the top match
 top_result_idx = torch.argmax(cos_scores).item()
 
+# 7. Retrieve the bottom match 
+bottom_result_idx = torch.argmin(cos_scores).item()
+
 print("Best Matching Knowledge Base Article:")
 print(f"-> {kb_documents[top_result_idx]}")
 print(f"Confidence Similarity Score: {cos_scores[top_result_idx]:.4f}")
+
+print("\nWorst Matching Knowledge Base Article:")
+print(f"-> {kb_documents[bottom_result_idx]}")
+print(f"Confidence Similarity Score: {cos_scores[bottom_result_idx]:.4f}")
